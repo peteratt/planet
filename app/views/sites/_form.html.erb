@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :type_id %><br />
-    <%= f.text_field :type_id %>
+    <%= f.collection_select(:type_id, Type.find(:all, :order => :name), :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :latitude %><br />
