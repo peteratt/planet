@@ -1,19 +1,35 @@
 <!DOCTYPE html>
+
+<!-- poner en application.html.erb este contenido -->
 <html>
 <head>
-  <title>Planet</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+  <title>Planet Travel Site</title>
+    <!-- START:stylesheet -->
+    <%= stylesheet_link_tag "scaffold" %>
+    <%= stylesheet_link_tag "planet", :media => "all" %>
+    <!-- END:stylesheet -->
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
 </head>
-<body>
 
-<div>
-  <%= link_to "Sitios", sites_path %>
-  <%= link_to "Tipos", types_path %>
-</div>
+<body id="planet">
 
-<%= yield %>
-
+  <div id="banner">
+    <%= image_tag("logo3.png") %>
+    <%= @page_title || "Planet Travel Site" %>
+  </div>
+  
+  <div id="columns">
+    <div id="side">
+        <%= link_to "Home", planet_index_path %><br />
+        <%= link_to "Tipos", types_path %><br />
+        <%= link_to "Sitios", sites_path %><br />
+        <%= link_to "Contact", planet_contact_path %>
+     </div>
+     <div id="main">
+        <%= yield %>
+     </div>
+   </div>
 </body>
+
 </html>

@@ -2,7 +2,12 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.xml
   def index
-    @sites = Site.all
+    
+    if params[:type_id].nil? or params[:type_id].empty?
+      @sites = Site.all
+    else
+      @sites = Type.find(params[:type_id]).sites
+    end
 
     respond_to do |format|
       format.html # index.html.erb

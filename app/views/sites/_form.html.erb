@@ -20,8 +20,8 @@
     <%= f.text_area :description, :rows => 4 %>
   </div>
   <div class="field">
-    <%= f.label :type_id %><br />
-    <%= f.collection_select(:type_id, Type.find(:all, :order => :name), :id, :name) %>
+    <% types = Type.find(:all, :order => :name) %>
+       <%= f.collection_select(:type_id, types, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :latitude %><br />

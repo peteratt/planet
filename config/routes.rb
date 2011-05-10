@@ -1,7 +1,16 @@
 Planet::Application.routes.draw do
-  resources :types
+  
+  get "planet/index"
+
+  get "planet/contact"
+
+  resources :types do
+    resources :sites
+  end
 
   resources :sites
+  
+  root :to => "planet#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
