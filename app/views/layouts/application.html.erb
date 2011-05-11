@@ -23,6 +23,12 @@
     <div id="side">
         <%= link_to "Home", planet_index_path %><br />
         <%= link_to "Tipos", types_path %><br />
+        
+        <!-- Enlaces a cada uno de los tipos -->
+        <% Type.all.each do |type| %>
+          <span class="sub_side"><%= link_to type.name, '/types/' + type.id.to_s + '/sites' %></span> <br />
+        <% end %>
+        
         <%= link_to "Sitios", sites_path %><br />
         <%= link_to "Contact", planet_contact_path %>
      </div>

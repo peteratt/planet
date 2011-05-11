@@ -40,6 +40,10 @@
     font-size: small;
 }
 
+#side .sub_side {
+    padding-left: 1em;
+}
+
 #planet #notice {
     color: #000;
     border: 2px solid red;
