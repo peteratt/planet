@@ -1,9 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  description: MyText
+    name: Hello
+    description: MyText
 
 two:
-  name: MyString
-  description: MyText
+    name: Goodbye
+    description: MyText
+  
+monumento:
+    name: Monumento
+    description: Edificio o construcción de valor historico
+    
+naturaleza:
+    name: Naturaleza
+    description: Lugar al aire libre de interés natural
