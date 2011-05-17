@@ -43,6 +43,7 @@ class SiteTest < ActiveSupport::TestCase
     chicago = sites(:chicago)
     
     chicago2 = sites(:chicago)
+    
     assert teleco.valid?
     assert chicago.valid?
     assert chicago2.invalid?
