@@ -49,10 +49,8 @@ class SitesController < ApplicationController
   
   # GET /sites/search
   def search
-    searchStr = "visits >= "
-    searchNVisits = params[:search].to_s
-    searchStr = searchStr + searchNVisits
-    @sites = Site.where(searchStr)
+    str = params[:search].to_s
+    @sites = Site.where("name like ? or description like ?", "%#{str}%", "%#{str}%")
   end
 
   # POST /sites
