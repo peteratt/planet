@@ -22,7 +22,8 @@
   
   <p />
   <div class="visits">
-    <em>Visits <%= @site.visits %></em>
+    <!-- Es la unica solucion que he encontrado a que salga una visita menos -->
+    <em>Visits <%= @site.visits + 1 %></em>
   </div>
 </div>
 

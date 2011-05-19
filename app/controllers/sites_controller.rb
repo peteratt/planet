@@ -46,6 +46,14 @@ class SitesController < ApplicationController
   def edit
     @site = Site.find(params[:id])
   end
+  
+  # GET /sites/search
+  def search
+    searchStr = "visits >= "
+    searchNVisits = params[:search].to_s
+    searchStr = searchStr + searchNVisits
+    @sites = Site.where(searchStr)
+  end
 
   # POST /sites
   # POST /sites.xml

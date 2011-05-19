@@ -8,7 +8,11 @@ Planet::Application.routes.draw do
     resources :sites
   end
 
-  resources :sites
+  resources :sites do
+    collection do
+      get 'search'
+    end
+  end
   
   root :to => "planet#index"
 

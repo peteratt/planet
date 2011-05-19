@@ -31,6 +31,15 @@
         
         <%= link_to "Sitios", sites_path %><br />
         <%= link_to "Contact", planet_contact_path %>
+        
+        
+     </div>
+     <!-- Para buscar Sitios -->
+    <div id="search_box">
+      <%= form_tag(search_sites_path, :method => "get") do %>
+        <%= text_field_tag(:search, params[:search]) %>
+        <%= submit_tag("Search", :name => nil) %>
+      <% end %>
      </div>
      <div id="main">
         <%= yield %>

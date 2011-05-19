@@ -16,6 +16,7 @@
 }
 
 #columns {
+    position: relative;
     background: #446;
 }
 
@@ -46,6 +47,17 @@
 
 #side .sub_side {
     padding-left: 1em;
+}
+
+#search_box {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    width: 8em;
+}
+
+#search_box #search {
+    width: 6em;
 }
 
 #planet #notice {
