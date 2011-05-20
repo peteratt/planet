@@ -15,6 +15,16 @@
     padding-left: 10px;
 }
 
+#banner .user {
+    float: right;
+    color: #bfb;
+    font-size: small;
+}
+
+#banner .user a {
+    color: #fff;
+}
+
 #columns {
     background: #446;
 }
