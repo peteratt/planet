@@ -11,6 +11,8 @@
   <h3 id="site_name" ><%= @site.name %></h3>
 
   <p><%=sanitize @site.description %></p>
+  
+  <p><b>Autor:</b> <%= @site.user.name %></p>
 
   <div class="position">
     <span>
@@ -31,8 +33,9 @@
   </div>
 </div>
 
-<p />
-<%= link_to 'Edit', edit_site_path(@site) %> |
+<% if @site.user == current_user %>
+  <%= link_to 'Edit', edit_site_path(@site) %> |
+<% end %>
 <%= link_to 'Back', sites_path %>
 
 <script type="text/javascript">

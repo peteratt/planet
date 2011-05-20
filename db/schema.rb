@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110520153542) do
+ActiveRecord::Schema.define(:version => 20110520155400) do
 
   create_table "sites", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110520153542) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "visits",                                    :default => 0
+    t.integer  "user_id"
   end
 
   create_table "types", :force => true do |t|
@@ -32,7 +33,6 @@ ActiveRecord::Schema.define(:version => 20110520153542) do
     t.datetime "updated_at"
   end
 
-  # Tablas de users generada por devise con campos para gestión de usuarios y sesión.
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(:version => 20110520153542) do
     t.string   "name"
   end
 
-  # añaden índices de busqueda de usuarios por email y por token de reset de pwd
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
