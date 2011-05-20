@@ -3,26 +3,30 @@
   <h1><%= @site.type.name if @site.type %></h1>
 
   <%= image_tag(@site.image_url, :class => 'site_image') %>
-
-  <h3><%= @site.name %></h3>
+  
+  <!-- Aqui el mapa-->
+  
+  <div id="map_canvas" style="width:100%; height:100%"></div>
+  
+  <h3 id="site_name" ><%= @site.name %></h3>
 
   <p><%=sanitize @site.description %></p>
 
   <div class="position">
     <span>
       <b>Latitude:</b>
-      <%= @site.latitude %>
+      <span id="site_lat"><%= @site.latitude %></span>
     </span>
  
     <span>
        <b>Longitude:</b>
-       <%= @site.longitude %>
+       <span id="site_lon"><%= @site.longitude %></span>
     </span>
   </div>
   
   <p />
   <div class="visits">
-    <!-- Es la unica solucion que he encontrado a que salga una visita menos -->
+    <!-- Es la unica solucion que he encontrado a que salga una visita menos, puede que con reload... -->
     <em>Visits <%= @site.visits + 1 %></em>
   </div>
 </div>
@@ -30,3 +34,29 @@
 <p />
 <%= link_to 'Edit', edit_site_path(@site) %> |
 <%= link_to 'Back', sites_path %>
+
+<script type="text/javascript">
+  var latSitio = document.getElementById('site_lat').innerHTML;
+  var lonSitio = document.getElementById('site_lon').innerHTML;
+  var titleSitio = document.getElementById('site_name').innerHTML;
+
+  // Store my position (“y=mylat”, “x=mylong”) in variable “lating”
+  var latlng = new google.maps.LatLng(latSitio, lonSitio);
+
+  // Define my Google Maps options in variable “myOptions”
+  var myOptions = {
+    zoom: 15, // Define scale
+    center: latlng, // Define map center
+    mapTypeId: google.maps.MapTypeId.HYBRID // tipo Roadmad, Satellite, Terrain, Hybrid
+  };
+
+  // Load Google Map according to “myOptions” in Canvas identified by “map_canvas”
+  var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+
+  // Add marker in Google Maps “map” in position defined by “lating”
+  var marker = new google.maps.Marker({
+    position: latlng,
+    map: map,
+    title: titleSitio
+  });
+</script>

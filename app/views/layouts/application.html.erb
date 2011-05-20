@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<!-- poner en application.html.erb este contenido -->
 <html>
 <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <title>Planet Travel Site</title>
     <!-- START:stylesheet -->
     <%= stylesheet_link_tag "scaffold" %>
@@ -11,6 +11,10 @@
     <%= javascript_include_tag :defaults %>
     <%= csrf_meta_tag %>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false">
+    // Carga la librería de Google Maps
+    // Doc de Google Maps API: http://code.google.com/apis/maps/documentation/javascript/
+    </script>
 </head>
 
 <body id="planet">
@@ -22,30 +26,28 @@
   
   <div id="columns">
     <div id="side">
-        <%= link_to "Home", planet_index_path %><br />
-        <%= link_to "Tipos", types_path %><br />
-        
-        <!-- Enlaces a cada uno de los tipos -->
-        <% Type.all.each do |type| %>
-          <span class="sub_side"><%= link_to type.name, '/types/' + type.id.to_s + '/sites' %></span> <br />
-        <% end %>
-        
-        <%= link_to "Sitios", sites_path %><br />
-        <%= link_to "Contact", planet_contact_path %>
-        
-        
-     </div>
-     <!-- Para buscar Sitios -->
-    <div id="search_box">
-      <%= form_tag(search_sites_path, :method => "get") do %>
-        <%= text_field_tag(:search, params[:search]) %>
-        <%= submit_tag("Search", :name => nil) %>
+      <%= link_to "Home", planet_index_path %><br />
+      <%= link_to "Tipos", types_path %><br />
+      
+      <!-- Enlaces a cada uno de los tipos -->
+      <% Type.all.each do |type| %>
+        <span class="sub_side"><%= link_to type.name, '/types/' + type.id.to_s + '/sites' %></span> <br />
       <% end %>
-     </div>
-     <div id="main">
+      
+      <%= link_to "Sitios", sites_path %><br />
+      <%= link_to "Contact", planet_contact_path %>
+      <!-- Para buscar Sitios -->
+      <div id="search_box">
+        <%= form_tag(search_sites_path, :method => "get") do %>
+          <%= text_field_tag(:search, params[:search]) %>
+          <%= submit_tag("Search", :name => nil) %>
+        <% end %>
+      </div>
+    </div>
+    <div id="main">
         <%= yield %>
-     </div>
-   </div>
+    </div>
+  </div>
 </body>
 
 </html>
