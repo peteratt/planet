@@ -11,6 +11,7 @@ Planet::Application.routes.draw do
   end
 
   resources :sites do
+    resources :comments
     collection do
       get 'search'
     end
