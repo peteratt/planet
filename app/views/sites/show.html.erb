@@ -33,6 +33,30 @@
   </div>
 </div>
 
+<h2>Comments</h2>
+<% @site.comments.each do |comment| %>
+  <p>
+    <b>Commenter:</b>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <b>Comment:</b>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@site, @site.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :comentario %><br />
+    <%= f.text_area :comentario %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <% if @site.user == current_user %>
   <%= link_to 'Edit', edit_site_path(@site) %> |
 <% end %>

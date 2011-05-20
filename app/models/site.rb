@@ -1,6 +1,9 @@
 class Site < ActiveRecord::Base
+  
   belongs_to :type
   belongs_to :user
+  
+  has_many :comments
   
   # Se añaden estas definiciones
   validates :name, :description, :type_id, :latitude, :longitude, :zoom, :image_url, :presence => true
