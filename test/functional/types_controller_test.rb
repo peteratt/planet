@@ -2,7 +2,8 @@ require 'test_helper'
 
 class TypesControllerTest < ActionController::TestCase
   setup do
-    @type = types(:one)   # Carga de fixtures site.yml, entrada :one
+    @type = types(:monumento)   # Carga de fixtures site.yml, entrada :one
+    @type2 = types(:monumento2)
 	  @update = {           # Añadido: creamos un hash de parametros distintos
       :name         => 'AnotherType',
       :description  => 'AnotherText',
@@ -27,6 +28,14 @@ class TypesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to type_path(assigns(:type))
+  end
+  
+  # Prueba que no se pueden introducir dos tipos con el mismo nombre
+  test "should not create type with same name" do
+    post :create, :type => @type
+    post :create, :type => @type2
+    @type2.save
+    assert @type2.invalid?
   end
 
   test "should show type" do

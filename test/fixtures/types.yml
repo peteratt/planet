@@ -12,6 +12,6 @@ monumento:
     name: Monumento
     description: Edificio o construcción de valor historico
     
-naturaleza:
-    name: Naturaleza
+monumento2:
+    name: Monumento
     description: Lugar al aire libre de interés natural

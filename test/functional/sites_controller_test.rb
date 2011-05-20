@@ -2,7 +2,8 @@ require 'test_helper'
 
 class SitesControllerTest < ActionController::TestCase
   setup do
-    @site = sites(:one)
+    @site = sites(:teleco)
+    @site2 = sites(:teleco2)
     
     @update = { # Añadimos @update - objeto con parametros diferentes
       :name => 'AnotherSite',
@@ -33,9 +34,20 @@ class SitesControllerTest < ActionController::TestCase
 
     assert_redirected_to site_path(assigns(:site))
   end
+  
+  # Prueba que no se pueden introducir dos sitios con el mismo nombre
+  test "should not create site with same name" do
+    post :create, :site => @site
+    post :create, :site => @site2
+    @site2.save
+    assert @site2.invalid?
+  end
 
   test "should show site" do
-    get :show, :id => @site.to_param
+    assert_difference('@site.visits', 1) do
+      get :show, :id => @site.to_param
+      @site.reload
+    end
     assert_response :success
   end
 

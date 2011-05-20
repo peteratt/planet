@@ -1,23 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  name: Hola
-  description: MyText
-  type_id: 1
-  latitude: 9.99
-  longitude: 9.99
-  zoom: 9.99
-  image_url: MyString
-
-two:
-  name: Adios
-  description: MyText
-  type_id: 1
-  latitude: 9.99
-  longitude: 9.99
-  zoom: 9.99
-  image_url: MyString
-  
 teleco:
   name: Teleco
   description: Gran Escuela
@@ -26,6 +8,17 @@ teleco:
   longitude: 9.99
   zoom: 9.99
   image_url: MyString
+  visits: 5
+
+teleco2:
+  name: Teleco
+  description: wsahgwerhg
+  type_id: 2
+  latitude: 9.9
+  longitude: 9.99
+  zoom: 9.0
+  image_url: MyString
+  visits: 5
   
 chicago:
   name: Chicago
