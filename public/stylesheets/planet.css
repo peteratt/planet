@@ -40,6 +40,17 @@
     text-indent: 70%;
 }
 
+#foto_sitio {
+    float:left;
+}
+
+#map_canvas {
+    float: right
+    width:500px; 
+    height:300px;
+    padding-left: 7em;
+}
+
 #side {
     float: left;
     padding-top: 1em;
