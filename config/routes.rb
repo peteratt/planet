@@ -17,6 +17,8 @@ Planet::Application.routes.draw do
     end
   end
   
+  resources :comments
+  
   root :to => "planet#index"
 
   # The priority is based upon order of creation:

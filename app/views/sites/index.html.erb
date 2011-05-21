@@ -22,10 +22,10 @@
         <%= link_to 'Show', site %><br/>
         <% if site.user == current_user %>
           <%= link_to 'Edit', edit_site_path(site) %><br/>
-        <% end %>
-        <%= link_to 'Destroy', site,
+          <%= link_to 'Destroy', site,
                     :confirm => 'Are you sure?',
                     :method => :delete %>
+        <% end %>
       </td>
     </tr>
   <% end %>

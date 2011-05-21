@@ -38,7 +38,7 @@
 <h2>Comments</h2>
 <% @site.comments.each do |comment| %>
   <p>
-    <b>Commenter:</b>
+    <b>Autor:</b>
     <%= User.find(comment.user_id).name %>
   </p>
  
@@ -46,6 +46,9 @@
     <b>Comment:</b>
     <%= comment.body %>
   </p>
+  <% if current_user && comment.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_comment_path(comment) %>
+  <% end %>
 <% end %>
 
 <h2>Add a comment:</h2>
