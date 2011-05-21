@@ -4,52 +4,54 @@
  
   <h1><%= @site.type.name if @site.type %></h1>
 
-  <div id="foto_sitio"><%= image_tag(@site.image_url, :class => 'site_image') %></div>
-  
-  <!-- Aqui el mapa-->
-  
-  <div id="map_canvas"></div>
-  
-  <h3 id="site_name" ><%= @site.name %></h3>
+  <div id="col_info">
+    <%= image_tag(@site.image_url, :class => 'site_image') %>
+    <br />
+    <h3 id="site_name" ><%= @site.name %></h3>
 
-  <p><%=sanitize @site.description %></p>
-  
-  <p><b>Autor:</b> <%= @site.user.name %></p>
+    <p><%=sanitize @site.description %></p>
+    
+    <p><b>Autor:</b> <%= @site.user.name %></p>
+    
+    <p />
+    <div class="visits">
+      <!-- Es la unica solucion que he encontrado a que salga una visita menos, puede que con reload... -->
+      <em>Visits <%= @site.visits + 1 %></em>
+    </div>
+  </div>
 
-  <div class="position">
-    <span>
-      <b>Latitude:</b>
-      <span id="site_lat"><%= @site.latitude %></span>
-    </span>
- 
-    <span>
-       <b>Longitude:</b>
-       <span id="site_lon"><%= @site.longitude %></span>
-    </span>
+  <div id="col_mapa">
+    <!-- Aqui el mapa-->
+    <div id="map_canvas"></div>
+    
+    <b>Latitude:</b>
+    <span id="site_lat"><%= @site.latitude %></span>
+    
+    <b>Longitude:</b>
+    <span id="site_lon"><%= @site.longitude %></span>
   </div>
-  
-  <p />
-  <div class="visits">
-    <!-- Es la unica solucion que he encontrado a que salga una visita menos, puede que con reload... -->
-    <em>Visits <%= @site.visits + 1 %></em>
-  </div>
+
 </div>
 
-<h2>Comments</h2>
-<% @site.comments.each do |comment| %>
-  <p>
-    <b>Autor:</b>
-    <%= User.find(comment.user_id).name %>
-  </p>
- 
-  <p>
-    <b>Comment:</b>
-    <%= comment.body %>
-  </p>
-  <% if current_user && comment.user_id == current_user.id %>
-    <%= link_to 'Edit', edit_comment_path(comment) %>
+<div id="comentarios">
+  <h2>Comments</h2>
+  <% @site.comments.each do |comment| %>
+    <p>
+      <b>Autor:</b>
+      <%= User.find(comment.user_id).name %>
+    </p>
+   
+    <p>
+      <b>Comment:</b>
+      <%= comment.body %>
+    </p>
+    <% if current_user && comment.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_comment_path(comment) %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
+<p class="erroralert"><%= notice %></p>
 
 <h2>Add a comment:</h2>
 <%= form_for([@site, @site.comments.build]) do |f| %>

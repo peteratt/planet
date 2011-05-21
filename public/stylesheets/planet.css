@@ -36,12 +36,26 @@
     background: white;
 }
 
-#main .visits {
-    text-indent: 70%;
+#col_info {
+    width: 50%;
+    float: left;
 }
 
-#foto_sitio {
-    float:left;
+#col_info .visits {
+    text-indent: 50%;
+}
+
+#col_info p {
+    width: 70%;
+}
+
+#col_mapa {
+    width: 50%;
+    float: right;
+}
+
+#comentarios {
+    margin-top:500px;
 }
 
 #map_canvas {
@@ -49,6 +63,10 @@
     width:500px; 
     height:300px;
     padding-left: 7em;
+}
+
+.erroralert {
+    color: red;
 }
 
 #side {

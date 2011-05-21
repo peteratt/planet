@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
       if @comment.save
         redirect_to site_path(@site)
       else
-        redirect_to site_path(@site)
+        redirect_to(@site, :notice => 'Error, comentario de mas de 140 caracteres')
       end
     else
       redirect_to new_user_session_path
@@ -28,7 +28,6 @@ class CommentsController < ApplicationController
   # PUT /sites/1.xml
   def update
     @comment = current_user.comments.find(params[:id])
-    
     @site = Site.find(@comment.site_id)
 
     respond_to do |format|
