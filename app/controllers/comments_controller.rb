@@ -41,4 +41,16 @@ class CommentsController < ApplicationController
     end
   end
   
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @site = Site.find(@comment.site_id)
+    
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(@site, :notice => 'Comment was succesfully deleted.') }
+      format.xml  { head :ok }
+    end
+  end
+  
 end
