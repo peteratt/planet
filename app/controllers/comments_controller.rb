@@ -22,6 +22,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @comment = current_user.comments.find(params[:id])
+    @site = Site.find(@comment.site_id)
   end
   
   # PUT /sites/1

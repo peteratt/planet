@@ -44,6 +44,7 @@ class SitesControllerTest < ActionController::TestCase
   end
 
   test "should show site" do
+    # Comprueba que se actualizan las visitas en 1
     assert_difference('@site.visits', 1) do
       get :show, :id => @site.to_param
       @site.reload
